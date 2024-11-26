@@ -10,7 +10,7 @@ namespace EFprojetoApp
 
         public Form1()
         {
-            
+
             InitializeComponent();
 
             // Cria uma nova instância do contexto da base de dados
@@ -49,6 +49,28 @@ namespace EFprojetoApp
         // Método para configurar a aparência das colunas do DataGridView
         private void ConfigurarColunas()
         {
+
+            // Configurações básicas
+            dataGridViewSocios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewSocios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewSocios.AllowUserToAddRows = false;
+            dataGridViewSocios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewSocios.MultiSelect = false;
+            dataGridViewSocios.RowHeadersVisible = false;
+
+            // Estilo
+            dataGridViewSocios.BackgroundColor = Color.LightGray;
+            dataGridViewSocios.DefaultCellStyle.BackColor = Color.White;
+            dataGridViewSocios.DefaultCellStyle.ForeColor = Color.Black;
+            dataGridViewSocios.DefaultCellStyle.Font = new Font("Arial", 10);
+            dataGridViewSocios.AlternatingRowsDefaultCellStyle.BackColor = Color.LightBlue;
+
+            // Cabeçalho
+            dataGridViewSocios.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
+            dataGridViewSocios.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dataGridViewSocios.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold);
+
+
             // Define os textos dos cabeçalhos das colunas
             dataGridViewSocios.Columns["Id"].HeaderText = "ID";
             dataGridViewSocios.Columns["Nome"].HeaderText = "Nome";
@@ -76,5 +98,102 @@ namespace EFprojetoApp
         {
             CarregarDados();
         }
+
+        private void dataGridViewSocios_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridViewSocios.SelectedRows.Count == 0) return;
+
+            var row = dataGridViewSocios.SelectedRows[0];
+            txtNumero.Text = row.Cells["Id"].Value.ToString();
+            txtNome.Text = row.Cells["Nome"].Value.ToString();
+            txtEmail.Text = row.Cells["Email"].Value.ToString();
+            dtpDataDeEntrada.Value = Convert.ToDateTime(row.Cells["DataDeEntrada"].Value);
+        }
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var novoSocio = new Socios
+                {
+                    Nome = txtNome.Text,
+                    Email = txtEmail.Text,
+                    DataDeEntrada = dtpDataDeEntrada.Value
+                };
+
+                _context.Socios.Add(novoSocio);
+                _context.SaveChanges();
+                CarregarDados();
+                LimparCampos();
+                MessageBox.Show("Sócio adicionado com sucesso!", "Sucesso");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao adicionar sócio: {ex.Message}", "Erro");
+            }
+        }
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dataGridViewSocios.SelectedRows.Count == 0) return;
+
+                var id = (int)dataGridViewSocios.SelectedRows[0].Cells["Id"].Value;
+                var socio = _context.Socios.Find(id);
+
+                if (socio != null)
+                {          
+                    socio.Nome = txtNome.Text;
+                    socio.Email = txtEmail.Text;
+                    socio.DataDeEntrada = dtpDataDeEntrada.Value;
+
+                    _context.SaveChanges();
+                    CarregarDados();
+                    LimparCampos();
+                    MessageBox.Show("Sócio atualizado com sucesso!", "Sucesso");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao atualizar sócio: {ex.Message}", "Erro");
+            }
+        }
+
+        private void btnRemover_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dataGridViewSocios.SelectedRows.Count == 0) return;
+
+                var id = (int)dataGridViewSocios.SelectedRows[0].Cells["Id"].Value;
+                var socio = _context.Socios.Find(id);
+
+                if (socio != null)
+                {
+                    _context.Socios.Remove(socio);
+                    _context.SaveChanges();
+                    CarregarDados();
+                    MessageBox.Show("Sócio removido com sucesso!", "Sucesso");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao remover sócio: {ex.Message}", "Erro");
+            }
+        }
+
+        private void LimparCampos()
+        {
+            txtNome.Clear();
+            txtEmail.Clear();
+            dtpDataDeEntrada.Value = DateTime.Now;
+        }
+
     }
+
 }
+
+
+
+

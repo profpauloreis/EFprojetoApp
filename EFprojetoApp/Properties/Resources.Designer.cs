@@ -63,9 +63,79 @@ namespace EFprojetoApp.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Fatcow_Farm_Fresh_Broom_32 {
+            get {
+                object obj = ResourceManager.GetObject("Fatcow-Farm-Fresh-Broom.32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Fatcow_Farm_Fresh_Bullet_edit_32 {
+            get {
+                object obj = ResourceManager.GetObject("Fatcow-Farm-Fresh-Bullet-edit.32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Fatcow_Farm_Fresh_Database_refresh_32 {
             get {
                 object obj = ResourceManager.GetObject("Fatcow-Farm-Fresh-Database-refresh.32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Fatcow_Farm_Fresh_Diskette_32 {
+            get {
+                object obj = ResourceManager.GetObject("Fatcow-Farm-Fresh-Diskette.32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Fatcow_Farm_Fresh_List_suspended_accounts_32 {
+            get {
+                object obj = ResourceManager.GetObject("Fatcow-Farm-Fresh-List-suspended-accounts.32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Fatcow_Farm_Fresh_Recover_deleted_items_32 {
+            get {
+                object obj = ResourceManager.GetObject("Fatcow-Farm-Fresh-Recover-deleted-items.32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Fatcow_Farm_Fresh_Upgrade_downgrade_account_32 {
+            get {
+                object obj = ResourceManager.GetObject("Fatcow-Farm-Fresh-Upgrade-downgrade-account.32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Fatcow_Farm_Fresh_User_add_32 {
+            get {
+                object obj = ResourceManager.GetObject("Fatcow-Farm-Fresh-User-add.32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
